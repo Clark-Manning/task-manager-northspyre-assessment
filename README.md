@@ -73,13 +73,13 @@ curl -X POST \
 Delete Task
 
 ```
-curl -X DELETE http://localhost:5000/deleteTask/{insert task ID}
+curl -X DELETE http://localhost:5000/deleteTask/{Task_ID}
 ```
 
 Complete task
 
 ```
-curl -X PUT http://localhost:5000/completeTask/1
+curl -X PUT http://localhost:5000/completeTask/{Task_ID}
 ```
 
 # Testing
