@@ -4,14 +4,14 @@ from flask import abort
 DATABASE = "database.db"
 
 
-def get_db_connection():
-    conn = sqlite3.connect(DATABASE)
+def get_db_connection(database=DATABASE):
+    conn = sqlite3.connect(database)
     conn.row_factory = sqlite3.Row
     return conn
 
 
-def get_tasks():
-    conn = get_db_connection()
+def get_tasks(database=DATABASE):
+    conn = get_db_connection(database)
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM tasks")
     rows = cursor.fetchall()
@@ -21,11 +21,11 @@ def get_tasks():
     return tasks
 
 
-def add_task(title, description):
+def add_task(title, description, database=DATABASE):
     if not title:
         abort(400, "Title is required")
 
-    conn = get_db_connection()
+    conn = get_db_connection(database)
     cursor = conn.cursor()
     cursor.execute(
         "INSERT INTO tasks (title, description, completed) VALUES (?, ?, ?)", (title, description, 0))
@@ -35,8 +35,8 @@ def add_task(title, description):
     return {"message": "Task added successfully"}
 
 
-def delete_task(task_id):
-    conn = get_db_connection()
+def delete_task(task_id, database=DATABASE):
+    conn = get_db_connection(database)
     cursor = conn.cursor()
     cursor.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
     conn.commit()
@@ -44,11 +44,9 @@ def delete_task(task_id):
 
     return {"message": "Task deleted successfully"}
 
-# TODO: FIX COMPLETED FUNCTIONALITY
 
-
-def complete_task(task_id, completed):
-    conn = get_db_connection()
+def complete_task(task_id, completed, database=DATABASE):
+    conn = get_db_connection(database)
     cursor = conn.cursor()
     if completed:
         cursor.execute(
