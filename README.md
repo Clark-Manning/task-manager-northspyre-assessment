@@ -100,6 +100,8 @@ Navigate to `/src` and run:
 npm test
 ```
 
+if the frontend test does not automatically run, there should be instructions to press `a` to run tests in the terminal manually
+
 # Architecture/Design Decisions
 
 This is a flask backend, using an sqlite database, and react frontend. The backend must first initialize a db which I chose to have as its own init file as something to run once as it never needs to be ran again. The db file may be deleted and the init ran again, but this logic did not need to be encapsulated in the main program. The sqlite database contains a table called "tasks" [id, title, description, completed]. It currently initializes the db with one example task. The rest can be added using requests to the backend directly, or using the frontend interface.
