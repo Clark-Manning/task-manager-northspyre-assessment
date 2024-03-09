@@ -19,6 +19,7 @@ const TaskCard = ({ item, handleMarkComplete, handleDelete }) => {
           >
             {item.completed ? 'Completed' : 'Mark Complete'}
           </button>
+
           <button
             className="btn btn-danger mx-2"
             onClick={() => handleDelete(item.id)}

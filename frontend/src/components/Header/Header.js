@@ -8,9 +8,7 @@ function Header() {
           <a className="brand">Task Manager</a>
         </div>
         <div className="nav-right">
-          <div className="tabs">
-            <a>Northspyre Assesment</a>
-          </div>
+          <a>Northspyre Assesment</a>
         </div>
       </nav>
     </div>

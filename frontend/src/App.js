@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
-import TaskManager from './components/TaskManager';
+import Header from './components/Header/Header';
+import TaskManager from './components/TaskManager/TaskManager';
 
 function App() {
   return (

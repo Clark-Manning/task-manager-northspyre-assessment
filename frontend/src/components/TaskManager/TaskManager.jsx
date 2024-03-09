@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TaskForm from './TaskForm';
-import TaskList from './TaskList';
-import { getTasks, addTask, deleteTask, completeTask } from './utility';
+import TaskForm from '../TaskForm/TaskForm';
+import TaskList from '../TaskList/TaskList';
+import { getTasks, addTask, deleteTask, completeTask } from '../utility';
 
 const TaskManager = () => {
   const [inputTitle, setInputTitle] = useState('');
