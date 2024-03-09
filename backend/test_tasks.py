@@ -1,9 +1,7 @@
 import unittest
 import sqlite3
 import os
-from tasks import get_db_connection, get_tasks, add_task, delete_task, complete_task
-
-# Mock DATABASE constant for testing
+from tasks import get_tasks, add_task, delete_task, complete_task
 
 
 class TestTaskFunctions(unittest.TestCase):
@@ -32,6 +30,7 @@ class TestTaskFunctions(unittest.TestCase):
         cursor.execute("DELETE FROM tasks")
         self.conn.commit()
 
+    def test_get_tasks(self):
         tasks = get_tasks(database=self.DATABASE)
 
         print('Get tasks:')
