@@ -1,15 +1,13 @@
-(maybe)
-pip install requirements.txt
-
 # Setup
 
 ### Backend setup
 
 navigate to `/backend` and run the following commands:
 
-To start the virtual environment for ease of use across systems:
+To install and start the virtual environment for ease of use across systems:
 
 ```
+python3 -m venv venv
 source venv/bin/activate
 ```
 
