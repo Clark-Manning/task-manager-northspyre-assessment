@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from tasks import get_tasks, add_task, delete_task, complete_task
+from tasks import get_tasks, add_task, delete_task, complete_task, add_sub_task
 
 app = Flask(__name__)
 
@@ -16,6 +16,17 @@ def add_task_route():
     title = data.get("title")
     description = data.get("description")
     result = add_task(title, description)
+    return jsonify(result), 201
+
+
+@app.route("/addSubTask", methods=["POST"])
+def add_sub_task_route():
+    data = request.json
+    title = data.get("title")
+    description = data.get("description")
+    parentId = data.get("parentId")
+    print(parentId)
+    result = add_sub_task(title, description, parentId)
     return jsonify(result), 201
 
 

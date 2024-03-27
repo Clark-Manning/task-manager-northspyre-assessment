@@ -17,7 +17,14 @@ def get_tasks(database=DATABASE):
     rows = cursor.fetchall()
     conn.close()
     tasks = [{"id": row["id"], "title": row["title"], "description": row["description"],
-              "completed": bool(row["completed"])} for row in rows]
+              "completed": bool(row["completed"]), "parentId": row["parentId"], "subTasks": []} for row in rows]
+
+    for task in tasks:
+        if task["parentId"]:
+            for parent_task in tasks:
+                if task["parentId"] == parent_task["id"]:
+                    parent_task["subTasks"].append(task)
+
     return tasks
 
 
@@ -33,6 +40,19 @@ def add_task(title, description, database=DATABASE):
     conn.close()
 
     return {"message": "Task added successfully"}
+
+
+def add_sub_task(title, description, parentId, database=DATABASE):
+    if not title:
+        abort(400, "Title is required")
+    conn = get_db_connection(database)
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO tasks (title, description, completed, parentId) VALUES (?, ?, ?, ?)", (title, description, 0, parentId))
+    conn.commit()
+    conn.close()
+
+    return {"message": "Subtask added successfully"}
 
 
 def delete_task(task_id, database=DATABASE):
