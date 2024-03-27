@@ -70,6 +70,15 @@ curl -X POST \
   http://localhost:5000/addTask
 ```
 
+Add example subtask
+
+```
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"title": "New Subtask", "description": "Description of the new subtask", "parentId": 1}' \
+  http://localhost:5000/addSubTask
+```
+
 Delete Task
 
 ```

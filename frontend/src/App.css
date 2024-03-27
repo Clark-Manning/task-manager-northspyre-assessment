@@ -33,7 +33,7 @@ nav a{
 }
 .Button {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin:20px !important;
 }
 .task-container {
@@ -50,4 +50,11 @@ nav a{
 }
 .task_edit form input, label, button {
   margin: 5px, 10px !important;
+}
+
+.subtask {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
