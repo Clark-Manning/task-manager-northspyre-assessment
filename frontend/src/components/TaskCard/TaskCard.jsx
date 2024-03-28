@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TaskCard = ({ item, handleMarkComplete, handleDelete }) => {
+const TaskCard = ({ taskNum, item, handleMarkComplete, handleDelete }) => {
   const renderButtons = (taskId, completed) => (
     <div className="d-flex align-items center">
       <button
@@ -27,7 +27,7 @@ const TaskCard = ({ item, handleMarkComplete, handleDelete }) => {
           <div>
             <h4>
               <b>
-                {item.id}. {item.title}
+                {taskNum}. {item.title}
               </b>
             </h4>
             <p>{item.description}</p>
@@ -37,11 +37,11 @@ const TaskCard = ({ item, handleMarkComplete, handleDelete }) => {
         {item.subTasks && item.subTasks.length > 0 && (
           <div className="col-12 mt-3">
             <h5>Subtasks:</h5>
-            {item.subTasks.map((subTask) => (
+            {item.subTasks.map((subTask, subTaskNum) => (
               <div key={subTask.id} className="subtask">
                 <h6>
                   <b>
-                    {subTask.id}. {subTask.title}
+                    {subTaskNum + 1}. {subTask.title}
                   </b>
                 </h6>
                 <p>{subTask.description}</p>
